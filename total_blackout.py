@@ -55,31 +55,43 @@ X = [800,1000,1200]
 # plt.savefig('totalblackout.png',bbox_inches='tight')
 # plt.show()
 
+# df_o_total = []
+# for i in id.df_o:
+#     df_o_total.append(id.total_data(i,'sink'))
+# df_o = [np.mean(np.array(df_o_total[0:5])),np.mean(np.array(df_o_total[5:10])),np.mean(np.array(df_o_total[10:15]))]
+
+
+
+# df_m_total = []
+# for i in id.df_m:
+#     df_m_total.append(id.total_data(i,'sink'))
+# df_m = [np.mean(np.array(df_m_total[0:5])),np.mean(np.array(df_m_total[5:10])),np.mean(np.array(df_m_total[10:15]))]
+
 df_o_total = []
 for i in id.df_o:
-    df_o_total.append(id.total_data(i,'sink'))
+    df_o_total.append(id.total_data(i,'blackout'))
 df_o = [np.mean(np.array(df_o_total[0:5])),np.mean(np.array(df_o_total[5:10])),np.mean(np.array(df_o_total[10:15]))]
 
 df_m_total = []
 for i in id.df_m:
-    df_m_total.append(id.total_data(i,'sink'))
+    df_m_total.append(id.total_data(i,'blackout'))
 df_m = [np.mean(np.array(df_m_total[0:5])),np.mean(np.array(df_m_total[5:10])),np.mean(np.array(df_m_total[10:15]))]
 
 df_s_total = []
 for i in id.df_s:
-    df_s_total.append(id.total_data(i,'sink'))
+    df_s_total.append(id.total_data(i,'blackout'))
 df_s = [np.mean(np.array(df_s_total[0:5])),np.mean(np.array(df_s_total[5:10])),np.mean(np.array(df_s_total[10:15]))]
 
 df_c_total = []
 for i in id.df_c:
-    df_c_total.append(id.total_data(i,'sink'))
+    df_c_total.append(id.total_data(i,'blackout'))
 df_c = [np.mean(np.array(df_c_total[0:5])),np.mean(np.array(df_c_total[5:10])),np.mean(np.array(df_c_total[10:15]))]
 
-S_data = np.array([[df_o[0]/ (1024*1024), df_s[0]/ (1024*1024), df_c[0] / (1024*1024), df_m[0] / (1024*1024)],
-                  [df_o[1]/ (1024*1024), df_s[1]/ (1024*1024), df_c[1] / (1024*1024), df_m[1] / (1024*1024)],
-                  [df_o[2]/ (1024*1024), df_s[2]/ (1024*1024), df_c[2] / (1024*1024), df_m[2] / (1024*1024)]])
+B_data = np.array([[df_o[0] * 10 / 60,df_s[0] * 10 / 60, df_c[0] * 10 / 60,df_m[0] * 10 / 60],
+                  [df_o[1] * 10 / 60,df_s[1] * 10 / 60, df_c[1] * 10 / 60,df_m[1] * 10 / 60],
+                  [df_o[2] * 10 / 60,df_s[2] * 10 / 60, df_c[2] * 10 / 60,df_m[2] * 10 / 60]])
 
-print(S_data)
+print(B_data)
 # diffrence_800 = abs(S_data[0][0] - S_data[0][1]) / S_data[0][0] * 100
 # diffrence_1000 = abs(S_data[1][0] - S_data[1][1]) / S_data[1][0] * 100
 # diffrence_1200 = abs(S_data[2][0] - S_data[2][1]) / S_data[2][0] * 100
@@ -87,19 +99,23 @@ print(S_data)
 # print(diffrence_1000)
 # print(diffrence_1200)
 
-df_S = pd.DataFrame(data=S_data,index=[format(800,","),format(1000,","),format(1200,",")], columns=('LBDD','Line shift', 'LARCMS','Proposed scheme'))
+# df_S = pd.DataFrame(data=S_data, index=('LBDD','Line Shift', 'LARCMS', 'Proposed scheme'), index=range(0,1))
+df_B = pd.DataFrame(data=B_data,index=[format(800,","),format(1000,","),format(1200,",")], columns=('LBDD','Line shift', 'LARCMS','Proposed scheme'))
 
-fig2 = df_S.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1],id.color_dict[2],id.color_dict[3]], edgecolor="black")
+fig2 = df_B.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1],id.color_dict[2],id.color_dict[3]], edgecolor="black")
+
+# fig2 = df_S.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1]], edgecolor="black")
 plt.xlabel('Number of nodes', labelpad=10)
-plt.ylabel('Amount of gathered data at the sink (MB)', labelpad=10)
+plt.ylabel('Total blackout time (Hours)', labelpad=10)
 plt.xticks(rotation=360)
-plt.yticks([0,500,1000,1500,2000],[format(i,",") for i in [0,500,1000,1500,2000]])
+# plt.yticks([i for i in range(0,int(max(B_data))+5000, 5000)],[format(i,",") for i in range(0,int(max(B_data))+5000, 5000)])
+
 
 plt.subplots_adjust(left=0.15)
 
 ax = plt.gca()
 ax.tick_params(which='major', direction='in', length = 7)
-plt.savefig('totalsinkdata.png',bbox_inches='tight')
+plt.savefig('totalblackoutdata.png',bbox_inches='tight')
 plt.show()
 
 
