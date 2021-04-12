@@ -87,13 +87,14 @@ print(S_data)
 # print(diffrence_1000)
 # print(diffrence_1200)
 
-df_S = pd.DataFrame(data=S_data,index=[format(800,","),format(1000,","),format(1200,",")], columns=('LBDD','Line shift', 'LARCMS','Proposed scheme'))
+df_S = pd.DataFrame(data=S_data,index=[format(800,","),format(1000,",",),format(1200,",")], columns=('LBDD','Line shift', 'LARCMS','Proposed scheme'))
 
 fig2 = df_S.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1],id.color_dict[2],id.color_dict[3]], edgecolor="black")
 plt.xlabel('Number of nodes', labelpad=10)
 plt.ylabel('Amount of gathered data at the sink (MB)', labelpad=10)
 plt.xticks(rotation=360)
-plt.yticks([0,500,1000,1500,2000],[format(i,",") for i in [0,500,1000,1500,2000]])
+
+plt.yticks([i for i in np.arange(0,max(map(max, S_data))+500, 2500)],[format(i,",") for i in np.arange(0,int(max(map(max, S_data))+500), 2500)])
 
 plt.subplots_adjust(left=0.15)
 

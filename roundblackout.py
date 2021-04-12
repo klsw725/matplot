@@ -18,7 +18,7 @@ for j in range(0,len(id.df_o[0]['blackout'])):
 
 for j in range(0,len(osink1)):
     totalo = totalo + osink1[j]
-    if j % 6 == 5:
+    if j % 12 == 11:
         osink.append(totalo)
         totalo = 0
 
@@ -45,7 +45,7 @@ for j in range(0,len(id.df_m[0]['blackout'])):
 
 for j in range(0,len(msink1)):
     totalo = totalo + msink1[j]
-    if j % 6 == 5:
+    if j % 12 == 11:
         msink.append(totalo)
         totalo = 0
 
@@ -71,7 +71,7 @@ for j in range(0,len(id.df_s[0]['blackout'])):
 
 for j in range(0,len(ssink1)):
     totalo = totalo + ssink1[j]
-    if j % 6 == 5:
+    if j % 12 == 11:
         ssink.append(totalo)
         totalo = 0
 
@@ -97,7 +97,7 @@ for j in range(0,len(id.df_c[0]['blackout'])):
 
 for j in range(0,len(csink1)):
     totalo = totalo + csink1[j]
-    if j % 6 == 5:
+    if j % 12 == 11:
         csink.append(totalo)
         totalo = 0
 
@@ -112,15 +112,16 @@ for i in range(0,len(csink)):
 
 plt.ylim(min(msink_avg),max(max(ssink_avg), max(osink_avg), max(csink_avg), max(msink_avg))+200)
 plt.xlim(0,len(msink_avg))
-# for_yticks = []
-# for i in range(0,200,20):
+for_yticks = []
+
+# for i in range(0,1100,100):
 #     for_yticks.append(format(i,","))
 #
-# plt.yticks([i for i in range(0,200,20)],for_yticks)
+# plt.yticks([i for i in range(0,1100,100)],for_yticks)
 # plt.xlim(0,len(osink_avg)-30)
 
 for_xtick = []
-for i in range(0,725,120):
+for i in range(0,len(msink_avg)+120,120):
     if i == 0:
         for_xtick.append("")
     else:
@@ -133,7 +134,7 @@ plt.plot(range(0,len(csink_avg)), csink_avg, marker='h', color='black', label='L
 plt.plot(range(0,len(msink_avg)), msink_avg, marker='s', color='red', label="Proposed scheme", markevery=24, markersize=10)
 
 plt.legend(loc=2)
-plt.xlabel('Simulation time (Hours)', labelpad=10)
+plt.xlabel('Simulation time (Rounds)', labelpad=10)
 plt.ylabel('Blackout time (Hours)', labelpad=10)
 
 ax = plt.gca()
@@ -141,5 +142,6 @@ ax.tick_params(which='major', direction='in', length = 15)
 ax.tick_params(axis='y', which='major', direction='in', length = 7)
 
 plt.savefig('roundblackout.png',bbox_inches='tight',padding=0)
+plt.savefig('roundblackout.pdf',bbox_inches='tight',padding=0)
 plt.show()
 
