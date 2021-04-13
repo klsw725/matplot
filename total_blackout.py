@@ -116,6 +116,7 @@ plt.subplots_adjust(left=0.15)
 ax = plt.gca()
 ax.tick_params(which='major', direction='in', length = 7)
 plt.savefig('totalblackoutdata.png',bbox_inches='tight')
+plt.savefig('totalblackoutdata.pdf',bbox_inches='tight')
 plt.show()
 
 

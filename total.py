@@ -101,6 +101,7 @@ plt.subplots_adjust(left=0.15)
 ax = plt.gca()
 ax.tick_params(which='major', direction='in', length = 7)
 plt.savefig('totalsinkdata.png',bbox_inches='tight')
+plt.savefig('totalsinkdata.pdf',bbox_inches='tight')
 plt.show()
 
 
