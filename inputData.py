@@ -3,7 +3,7 @@ import pandas as pd
 
 plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['font.size'] = 25
-plt.rcParams['figure.figsize'] = (12,9)
+plt.rcParams['figure.figsize'] = (21,14)
 
 color_dict = ['blue','green','black','red']
 

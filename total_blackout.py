@@ -87,9 +87,9 @@ for i in id.df_c:
     df_c_total.append(id.total_data(i,'blackout'))
 df_c = [np.mean(np.array(df_c_total[0:5])),np.mean(np.array(df_c_total[5:10])),np.mean(np.array(df_c_total[10:15]))]
 
-B_data = np.array([[df_o[0] * 10 / 60,df_s[0] * 10 / 60, df_c[0] * 10 / 60,df_m[0] * 10 / 60],
-                  [df_o[1] * 10 / 60,df_s[1] * 10 / 60, df_c[1] * 10 / 60,df_m[1] * 10 / 60],
-                  [df_o[2] * 10 / 60,df_s[2] * 10 / 60, df_c[2] * 10 / 60,df_m[2] * 10 / 60]])
+B_data = np.array([[df_o[0] * 5 / 60,df_s[0] * 5 / 60, df_c[0] * 5 / 60,df_m[0] * 5 / 60],
+                  [df_o[1] * 5 / 60,df_s[1] * 5 / 60, df_c[1] * 5 / 60,df_m[1] * 5 / 60],
+                  [df_o[2] * 5 / 60,df_s[2] * 5 / 60, df_c[2] * 5 / 60,df_m[2] * 5 / 60]])
 
 print(B_data)
 # diffrence_800 = abs(S_data[0][0] - S_data[0][1]) / S_data[0][0] * 100
@@ -100,7 +100,7 @@ print(B_data)
 # print(diffrence_1200)
 
 # df_S = pd.DataFrame(data=S_data, index=('LBDD','Line Shift', 'LARCMS', 'Proposed scheme'), index=range(0,1))
-df_B = pd.DataFrame(data=B_data,index=[format(800,","),format(1000,","),format(1200,",")], columns=('LBDD','Line shift', 'LARCMS','Proposed scheme'))
+df_B = pd.DataFrame(data=B_data,index=[format(800),format(1000),format(1200)], columns=('LBDD','Single Line shift', 'LARCMS','Proposed scheme'))
 
 fig2 = df_B.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1],id.color_dict[2],id.color_dict[3]], edgecolor="black")
 
@@ -108,8 +108,7 @@ fig2 = df_B.plot(kind='bar',color=[id.color_dict[0],id.color_dict[1],id.color_di
 plt.xlabel('Number of nodes', labelpad=10)
 plt.ylabel('Total blackout time (Hours)', labelpad=10)
 plt.xticks(rotation=360)
-# plt.yticks([i for i in range(0,int(max(B_data))+5000, 5000)],[format(i,",") for i in range(0,int(max(B_data))+5000, 5000)])
-
+plt.yticks([i for i in np.arange(0,max(map(max, B_data))+5000, 50000)],[i if i < 10000 else format(i,",") for i in np.arange(0,int(max(map(max, B_data))+5000), 50000)])
 
 plt.subplots_adjust(left=0.15)
 

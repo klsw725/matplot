@@ -74,19 +74,19 @@ X = [800,1000,1200]
 #     df_o_total.append(id.total_data(i,'sink'))
 # df_o = [np.mean(np.array(df_o_total[0:5])),np.mean(np.array(df_o_total[5:10])),np.mean(np.array(df_o_total[10:15]))]
 
-df_o = open_file('OLP1000_10_5.csv',"index","blackout","sink","canttransmit")
+df_o = open_file('OLP600_10_5.csv',"index","blackout","sink","canttransmit")
 df_o_total = total_data(df_o,'blackout')
 df_o_total_ct = total_data(df_o,"canttransmit")
 
-df_m = open_file('MLP1000_10_5.csv',"index","blackout","sink","canttransmit")
+df_m = open_file('MLP600_10_5.csv',"index","blackout","sink","canttransmit")
 df_m_total = total_data(df_m,'blackout')
 df_m_total_ct = total_data(df_m,"canttransmit")
 
-df_s = open_file('SLP1000_10_5.csv',"index","blackout","sink","canttransmit")
+df_s = open_file('SLP600_10_5.csv',"index","blackout","sink","canttransmit")
 df_s_total = total_data(df_s,'blackout')
 df_s_total_ct = total_data(df_s,"canttransmit")
 
-df_c = open_file('CLP1000_10_5.csv',"index","blackout","sink","canttransmit")
+df_c = open_file('CLP600_10_5.csv',"index","blackout","sink","canttransmit")
 df_c_total = total_data(df_c,'blackout')
 df_c_total_ct = total_data(df_c,"canttransmit")
 

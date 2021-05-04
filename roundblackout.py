@@ -12,7 +12,7 @@ for j in range(0,len(id.df_o[0]['blackout'])):
     for i in range(0, 5):
         totalo = totalo + id.df_o[i+5]['blackout'][j]
     totalo = totalo/5
-    totalo = totalo * 10 / 60
+    totalo = totalo * 5 / 60
     osink1.append(totalo)
     totalo = 0
 
@@ -39,7 +39,7 @@ for j in range(0,len(id.df_m[0]['blackout'])):
     for i in range(0, 5):
         totalo = totalo + id.df_m[i+5]['blackout'][j]
     totalo = totalo/5
-    totalo = totalo * 10 / 60
+    totalo = totalo * 5 / 60
     msink1.append(totalo)
     totalo = 0
 
@@ -65,7 +65,7 @@ for j in range(0,len(id.df_s[0]['blackout'])):
     for i in range(0, 5):
         totalo = totalo + id.df_s[i+5]['blackout'][j]
     totalo = totalo/5
-    totalo = totalo * 10 / 60
+    totalo = totalo * 5 / 60
     ssink1.append(totalo)
     totalo = 0
 
@@ -91,7 +91,7 @@ for j in range(0,len(id.df_c[0]['blackout'])):
     for i in range(0, 5):
         totalo = totalo + id.df_c[i+5]['blackout'][j]
     totalo = totalo/5
-    totalo = totalo * 10 / 60
+    totalo = totalo * 5 / 60
     csink1.append(totalo)
     totalo = 0
 
@@ -129,7 +129,7 @@ for i in range(0,len(msink_avg)+120,120):
 
 plt.xticks([i for i in range(0,len(msink_avg)+120,120)], for_xtick)
 plt.plot(range(0,len(osink_avg)), osink_avg, marker='^', color='blue', label='LBDD', markevery=24, markersize=10)
-plt.plot(range(0,len(ssink_avg)), ssink_avg, marker='*', color='green', label='Line shift', markevery=24, markersize=10)
+plt.plot(range(0,len(ssink_avg)), ssink_avg, marker='*', color='green', label='Single Line shift', markevery=24, markersize=10)
 plt.plot(range(0,len(csink_avg)), csink_avg, marker='h', color='black', label='LARCMS', markevery=24, markersize=10)
 plt.plot(range(0,len(msink_avg)), msink_avg, marker='s', color='red', label="Proposed scheme", markevery=24, markersize=10)
 

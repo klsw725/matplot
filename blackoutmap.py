@@ -114,7 +114,7 @@ for i in range(0,xn+10,10):
 
 ax1.set(title="LBDD", yticks=[i for i in range(0,xn+10,10)], yticklabels=for_yticks, xticks=[i for i in range(0,xn+10,10)],xticklabels=for_xticks)
 ax2.set(title="Proposed scheme", yticks=[i for i in range(0,xn+10,10)],yticklabels=for_yticks, xticks=[i for i in range(0,xn+10,10)],xticklabels=for_xticks)
-ax3.set(title="Line shift", yticks=[i for i in range(0,xn+10,10)],yticklabels=for_yticks, xticks=[i for i in range(0,xn+10,10)],xticklabels=for_xticks)
+ax3.set(title="Single Line shift", yticks=[i for i in range(0,xn+10,10)],yticklabels=for_yticks, xticks=[i for i in range(0,xn+10,10)],xticklabels=for_xticks)
 ax4.set(title="LARCMS",yticks=[i for i in range(0,xn+10,10)],yticklabels=for_yticks, xticks=[i for i in range(0,xn+10,10)],xticklabels=for_xticks)
 
 plt.savefig('BLACKOUT_M1.png',bbox_inches='tight')

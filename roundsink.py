@@ -114,7 +114,7 @@ for i in range(0,len(msink_avg)+660,120):
 
 plt.xticks([i for i in range(0,len(msink_avg)+30,30)], for_xtick)
 plt.plot(range(0,len(osink_avg)), osink_avg, marker='^', color='blue', label='LBDD', markevery=6, markersize=10)
-plt.plot(range(0,len(ssink_avg)), ssink_avg, marker='*', color='green', label='Line shift', markevery=6, markersize=10)
+plt.plot(range(0,len(ssink_avg)), ssink_avg, marker='*', color='green', label='Single Line shift', markevery=6, markersize=10)
 plt.plot(range(0,len(csink_avg)), csink_avg, marker='h', color='black', label='LARCMS', markevery=6, markersize=10)
 plt.plot(range(0,len(msink_avg)), msink_avg, marker='s', color='red', label="Proposed scheme", markevery=6, markersize=10)
 
